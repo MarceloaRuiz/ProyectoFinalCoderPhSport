@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {%  load static %}
+        {% load static %}
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Landing Page - Start Bootstrap Theme</title>
+        <title>Cursos</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../AppCoder/static/AppCoder/assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
         <!-- Google fonts-->
@@ -20,10 +20,19 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="#!">CoderHouse</a>
-                <a class="btn btn-primary" href="#signup">Ingresar</a>
+                <a class="navbar-brand" href="{% url 'AppCoderCursos' %}">Cursos</a>
+                <a class="navbar-brand" href="{% url 'AppCoderEstudiantes' %}">Estudiantes</a>
+                <a class="navbar-brand" href="https://facebook.com">Profesores</a>
+
+
+                <a class="btn btn-primary" href="#signup">Sign Up</a>
             </div>
         </nav>
+        <!-- Body -->
+        {% block contenido_cambia %}
+            <h1>No se encuentra contenido disponible</h1>
+        {% endblock %}
+
         <!-- Masthead-->
         <header class="masthead">
             <div class="container position-relative">
@@ -31,7 +40,7 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Bienvenido a mi Landig Page</h1>
+                            <h1 class="mb-5">Bienvenido al curso de Python de Coder!</h1>
                             <!-- Signup form-->
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -104,21 +113,21 @@
         <section class="showcase">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('../AppCoder/static/AppCoder/assets/img/bg-showcase-1.jpg')"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url({% static 'AppCoder/assets/img/bg-showcase-1.jpg' %})"></div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Fully Responsive Design</h2>
                         <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('../AppCoder/static/AppCoder/assets/img/bg-showcase-2.jpg')"></div>
+                    <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-2.jpg')"></div>
                     <div class="col-lg-6 my-auto showcase-text">
                         <h2>Updated For Bootstrap 5</h2>
                         <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 5 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 5!</p>
                     </div>
                 </div>
                 <div class="row g-0">
-                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('../AppCoder/static/AppCoder/assets/img/bg-showcase-3.jpg')"></div>
+                    <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/bg-showcase-3.jpg')"></div>
                     <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                         <h2>Easy to Use & Customize</h2>
                         <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
@@ -133,21 +142,21 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="../AppCoder/static/AppCoder/assets/img/testimonials-1.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="..." />
                             <h5>Margaret E.</h5>
                             <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="../AppCoder/static/AppCoder/assets/img/testimonials-2.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="..." />
                             <h5>Fred S.</h5>
                             <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                            <img class="img-fluid rounded-circle mb-3" src="../AppCoder/static/AppCoder/assets/img/testimonials-3.jpg" alt="..." />
+                            <img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="..." />
                             <h5>Sarah W.</h5>
                             <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
                         </div>
@@ -235,7 +244,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../AppCoder/static/AppCoder/js/scripts.js"></script>
+        <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
