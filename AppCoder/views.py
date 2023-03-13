@@ -1,8 +1,17 @@
 from django.shortcuts import render
 from AppCoder.models import Curso, Estudiantes
-from AppCoder.forms import CursoForm
+from AppCoder.forms import CursoForm, BusquedaCursoForm
 
-
+def busqueda_curso(request):
+    #mostrar datos filtrados
+    mi_formulario = BusquedaCursoForm(request.GET)
+    if mi_formulario.is_valid():
+        informacion = mi_formulario.cleaned_data
+        cursos_filtrados = Curso.objects.filter(nombre__icontains=informacion['nombre'])
+        context = {
+            "cursos": cursos_filtrados
+        }
+    return render(request, 'AppCoder/busqueda_curso.html', context=context)
 def cursos(request):
 
     if request.method == "POST":
@@ -16,10 +25,12 @@ def cursos(request):
             )
             curso_save.save()
 
+
     all_cursos = Curso.objects.all()
     context = {
         "cursos": all_cursos,
-        "form": CursoForm()
+        "form": CursoForm(),
+        "form_busqueda": BusquedaCursoForm()
     }
     return render(request, "AppCoder/cursos.html", context=context)
 
