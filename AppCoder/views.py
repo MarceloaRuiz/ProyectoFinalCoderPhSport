@@ -1,11 +1,25 @@
 from django.shortcuts import render
 from AppCoder.models import Curso, Estudiantes
+from AppCoder.forms import CursoForm
 
 
 def cursos(request):
+
+    if request.method == "POST":
+        mi_formulario = CursoForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            curso_save = Curso(
+                nombre=informacion['nombre'],
+                camada=informacion['camada']
+            )
+            curso_save.save()
+
     all_cursos = Curso.objects.all()
     context = {
-        "cursos": all_cursos
+        "cursos": all_cursos,
+        "form": CursoForm()
     }
     return render(request, "AppCoder/cursos.html", context=context)
 
