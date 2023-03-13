@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block contenido_cambia %}
+    <h1>El contenido ha sido modificado</h1>
+    {% if estudiantes %}
+        {% for estudiante in estudiantes %}
+            <p>nombre: {{ estudiante.nombre }}</p>
+            <p>apellido: {{ estudiante.apellido }}</p>
+        {% endfor %}
+    {% else %}
+        <h1>No hay estudiantes en el momento</h1>
+    {% endif %}
+
+{% endblock %}

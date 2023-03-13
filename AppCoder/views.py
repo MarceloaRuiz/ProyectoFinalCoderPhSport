@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from AppCoder.models import Curso
+from AppCoder.models import Curso, Estudiantes
 
 
 def cursos(request):
@@ -20,7 +20,20 @@ def crear_curso(request, nombre, camada):
 
 
 def estudiantes(request):
-    return render(request, "base.html")
+    all_estudiantes = Estudiantes.objects.all()
+    context = {
+        "cursos": all_estudiantes
+    }
+    return render(request, "AppCoder/estudiantes.html", context=context)
+
+
+def crear_estudiante(request, nombre, apellido, email):
+    save_estudiante = Estudiantes(nombre=nombre, apellido=apellido, email=email)
+    save_estudiante.save()
+    context = {
+        "nombre": nombre
+    }
+    return render(request, "AppCoder/save_estudiante.html", context)
 
 
 def profesores(request):
