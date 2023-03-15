@@ -1,4 +1,5 @@
 from django import forms
+from AppCoder.models import Curso
 
 class CursoForm(forms.Form):
 

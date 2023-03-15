@@ -2,21 +2,22 @@
 
 
 {% block contenido_cambia %}
-    <form action="{% url 'AppCoderCursos' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Crear">
-    </form>
+
+    {#buscar curso#}
     <br><hr>
     <form action="{% url 'AppCoderBuscarCurso' %}">
     {{ form_busqueda.as_p }}
     <input type="submit" value="Buscar">
     </form>
+    <a href="{% url "AppCoderCrearCursos"%}" > Creacion del curso</a>
+    {#ver cursos#}
     <hr><br>
     {% if cursos %}
         {% for curso in cursos %}
             <p>curso: {{ curso.nombre }}</p>
             <p>camada: {{ curso.camada }}</p>
+            <a href="{% url "AppCoderEliminarCursos" curso.camada %}">Eliminar</a>
+            <a href="{% url "AppCoderEditarCursos" curso.camada %}">Editar</a>
         {% endfor %}
     {% else %}
         <h1>No hay cursos en el momento</h1>
