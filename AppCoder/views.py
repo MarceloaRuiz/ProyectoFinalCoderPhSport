@@ -47,7 +47,7 @@ def crear_curso(request, nombre, camada):
 def estudiantes(request):
     all_estudiantes = Estudiantes.objects.all()
     context = {
-        "cursos": all_estudiantes
+        "estudiantes": all_estudiantes
     }
     return render(request, "AppCoder/estudiantes.html", context=context)
 
