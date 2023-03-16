@@ -2,11 +2,21 @@
 
 
 {% block contenido_cambia %}
-    <h1>El contenido ha sido modificado</h1>
-    {% if profesores %}
+
+    {#buscar curso#}
+    <br><hr>
+    <form action="{% url 'AppCoderBuscarProfesores' %}">
+    {{ form_busqueda.as_p }}
+    <input type="submit" value="Buscar">
+    </form>
+    <a href="{% url "AppCoderCrearProfesores"%}" > Creacion del profesor</a>
+    {#ver cursos#}
+    <hr><br>
+    {% if cursos %}
         {% for profesor in profesores %}
-            <p>nombre: {{ profesor.nombre }}</p>
-            <p>apellido: {{ profesor.apellido }}</p>
+            <p>profesor: {{ profesor.nombre }}</p>
+            <a href="{% url "AppCoderEliminarProfesores" profesor.nombre  %}">Eliminar</a>
+            <a href="{% url "AppCoderEditarProfesores" profesor.nombre %}">Editar</a>
         {% endfor %}
     {% else %}
         <h1>No hay profesores en el momento</h1>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from AppCoder.models import Curso, Estudiantes
+from AppCoder.models import Curso, Estudiantes, Profesor
 from AppCoder.forms import CursoForm, BusquedaCursoForm, EstudianteForm, ProfesorForm, BusquedaEstudianteForm, BusquedaProfesorForm
 
 def busqueda_curso(request):
@@ -96,10 +96,10 @@ def crear_estudiante(request):
             informacion = mi_formulario.cleaned_data
             estudiante_save = Estudiantes(
                 nombre=informacion['nombre'],
-                camada=informacion['camada']
+
             )
             estudiante_save.save()
-            return redirect("AppCoderCursos")
+            return redirect("AppCoderEstudiantes")
 
 
     context = {
@@ -119,41 +119,92 @@ def busqueda_estudiante(request):
     return render(request, 'AppCoder/busqueda_estudiante.html', context=context)
 
 
+def editar_estudiante(request):
+    get_estudiante = Estudiantes.objects.get
+    if request.method == "POST":
+        mi_formulario = EstudianteForm(request.POST)
 
-def crear_estudiante(request, nombre, apellido, email):
-    save_estudiante = Estudiantes(nombre=nombre, apellido=apellido, email=email)
-    save_estudiante.save()
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            get_estudiante.nombre=informacion['nombre'],
+            get_estudiante.save()
+            return redirect("AppCoderCursos")
+
+
     context = {
-        "nombre": nombre
+       "form": EstudianteForm(initial={
+            "nombre": get_estudiante.nombre,
+
+    })
     }
-    return render(request, "AppCoder/save_estudiante.html", context)
+    return render(request, 'AppCoder/editar_estudiante.html', context=context)
+
+def eliminar_estudiante(request):
+    get_estudiante = Estudiantes.objects.get()
+    get_estudiante.delete()
+
+    return redirect("AppCoderEstudiantes")
 
 
-def profesores(request):
-    all_profesores = profesores.objects.all()
+def Profesores(request):
+    all_profesor = Profesor.objects.all()
     context = {
-        "cursos": all_profesores,
+        "cursos": all_profesor,
         "form": ProfesorForm(),
         "form_busqueda": BusquedaProfesorForm()
     }
     return render(request, "AppCoder/profesores.html", context=context)
 
-def crear_profesores(request, nombre, apellido, email, profesion):
-    save_profesores = profesores(nombre=nombre, apellido=apellido, email=email, profesion=profesion)
-    save_profesores.save()
-    context = {
-        "nombre": nombre
-    }
-    return render(request, "AppCoder/save_profesores.html", context)
+def crear_profesores(request):
+    if request.method == "POST":
+        mi_formulario = ProfesorForm(request.POST)
 
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            profesor_save = Profesor(
+                nombre=informacion['nombre'],
+
+            )
+            profesor_save.save()
+            return redirect("AppCoderCursos")
+
+    context = {
+        "form": ProfesorForm()
+    }
+    return render(request, 'AppCoder/crear_profesores.html', context=context)
+
+def editar_profesor(request):
+    get_profesor = Profesor.objects.get
+    if request.method == "POST":
+        mi_formulario = ProfesorForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            get_profesor.nombre=informacion['nombre'],
+            get_profesor.save()
+            return redirect("AppCoderProfesores")
+
+
+    context = {
+       "form": EstudianteForm(initial={
+            "nombre": get_estudiante.nombre,
+            "camada": get_estudiante.camada
+    })
+    }
+    return render(request, 'AppCoder/editar_estudiante.html', context=context)
+
+def eliminar_profesor(request):
+    get_profesor = Profesor.objects.get()
+    get_profesor.delete()
+
+    return redirect("AppCoderProfesores")
 def busqueda_profesor(request):
     #mostrar datos filtrados
     mi_formulario = BusquedaProfesorForm(request.GET)
     if mi_formulario.is_valid():
         informacion = mi_formulario.cleaned_data
-        profesores_filtrados = profesores.objects.filter(nombre__icontains=informacion['nombre'])
+        profesores_filtrados = Profesor.objects.filter(nombre__icontains=informacion['nombre'])
         context = {
             "profesores": profesores_filtrados
         }
     return render(request, 'AppCoder/busqueda_profesor.html', context=context)
-
