@@ -10,6 +10,8 @@ urlpatterns = [
     path('buscar_curso', busqueda_curso, name="AppCoderBuscarCurso"),
     path('curso/<nombre>/<camada>', crear_curso1, name="AppCoderCurso"),
     path('estudiantes', estudiantes, name="AppCoderEstudiantes"),
-    path('estudiante/<nombre>/<apellido>', crear_estudiante, name="AppCoderEstudiantes"),
+    path('buscar_estudiante', busqueda_estudiante, name="AppCoderBuscarCurso"),
+    path('estudiantes/crear', crear_estudiante, name="AppCoderCrearEstudiantes"),
     path('profesores', profesores, name="AppCoderProfesores"),
+    path('profesores/crear', crear_profesores, name="AppCoderCrearProfesores")
 ]

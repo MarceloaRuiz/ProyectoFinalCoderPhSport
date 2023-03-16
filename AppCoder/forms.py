@@ -1,11 +1,30 @@
 from django import forms
-from AppCoder.models import Curso
+from AppCoder.models import Curso, Estudiantes, Profesor
 
-class CursoForm(forms.Form):
+class CursoForm(forms.ModelForm):
 
-    nombre = forms.CharField(min_length=3, max_length=40)
-    camada = forms.IntegerField(min_value=1000)
+    class Meta:
+        model = Curso
+        fields = "__all__"
 
+class EstudianteForm(forms.ModelForm):
+
+    class Meta:
+        model = Estudiantes
+        fields = "__all__"
+
+
+class ProfesorForm(forms.ModelForm):
+
+    class Meta:
+        model = Profesor
+        fields = "__all__"
 class BusquedaCursoForm(forms.Form):
 
     nombre = forms.CharField(min_length=3, max_length=40)
+
+class BusquedaEstudianteForm(forms.Form):
+
+    nombre = forms.CharField(min_length=3, max_length=40)
+class BusquedaProfesorForm(forms.Form):
+        nombre = forms.CharField(min_length=3, max_length=40)

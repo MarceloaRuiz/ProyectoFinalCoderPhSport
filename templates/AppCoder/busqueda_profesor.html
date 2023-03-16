@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido_cambia %}
+    {% if profesores %}
+        {% for profesor in profesores %}
+            <p>profesor: {{ profesor }}</p>
+
+        {% endfor %}
+    {% else %}
+        <h3>no hay profesores filtrados</h3>
+    {% endif %}
+
+
+{% endblock %}
