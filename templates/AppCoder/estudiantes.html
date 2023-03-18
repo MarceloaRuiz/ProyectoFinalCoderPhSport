@@ -12,11 +12,11 @@
     <a href="{% url "AppCoderCrearEstudiantes"%}" > Creacion del estudiante</a>
     {#ver cursos#}
     <hr><br>
-    {% if cursos %}
+    {% if estudiantes %}
         {% for estudiante in estudiantes %}
             <p>estudiante: {{ estudiante.nombre }}</p>
-            <a href="{% url "AppCoderEliminarEstudiantes"  %}">Eliminar</a>
-            <a href="{% url "AppCoderEditarEstudiantes"  %}">Editar</a>
+            <a href="{% url "AppCoderEliminarEstudiantes" estudiante.email  %}">Eliminar</a>
+            <a href="{% url "AppCoderEditarEstudiantes" estudiante.email  %}">Editar</a>
         {% endfor %}
     {% else %}
         <h1>No hay estudiantes en el momento</h1>

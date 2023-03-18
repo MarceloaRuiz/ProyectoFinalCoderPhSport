@@ -82,7 +82,7 @@ def crear_curso1(request, nombre, camada):
 def estudiantes(request):
     all_estudiantes = Estudiantes.objects.all()
     context = {
-        "cursos": all_estudiantes,
+        "estudiantes": all_estudiantes,
         "form": EstudianteForm(),
         "form_busqueda": BusquedaEstudianteForm()
     }
@@ -96,6 +96,8 @@ def crear_estudiante(request):
             informacion = mi_formulario.cleaned_data
             estudiante_save = Estudiantes(
                 nombre=informacion['nombre'],
+                apellido=informacion['apellido'],
+                email=informacion['email']
 
             )
             estudiante_save.save()
@@ -119,28 +121,34 @@ def busqueda_estudiante(request):
     return render(request, 'AppCoder/busqueda_estudiante.html', context=context)
 
 
-def editar_estudiante(request):
-    get_estudiante = Estudiantes.objects.get
+def editar_estudiante(request, email):
+    get_estudiante = Estudiantes.objects.get(email=email)
     if request.method == "POST":
         mi_formulario = EstudianteForm(request.POST)
 
         if mi_formulario.is_valid():
             informacion = mi_formulario.cleaned_data
             get_estudiante.nombre=informacion['nombre'],
+            get_estudiante.apellido = informacion['apellido'],
+            get_estudiante.email = informacion['email'],
             get_estudiante.save()
             return redirect("AppCoderCursos")
 
 
     context = {
+        "email": email,
        "form": EstudianteForm(initial={
             "nombre": get_estudiante.nombre,
+            "apellido": get_estudiante.apellido,
+            "email": get_estudiante.email
+
 
     })
     }
     return render(request, 'AppCoder/editar_estudiante.html', context=context)
 
-def eliminar_estudiante(request):
-    get_estudiante = Estudiantes.objects.get()
+def eliminar_estudiante(request, email):
+    get_estudiante = Estudiantes.objects.get(email=email)
     get_estudiante.delete()
 
     return redirect("AppCoderEstudiantes")

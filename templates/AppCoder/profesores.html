@@ -12,7 +12,7 @@
     <a href="{% url "AppCoderCrearProfesores"%}" > Creacion del profesor</a>
     {#ver cursos#}
     <hr><br>
-    {% if cursos %}
+    {% if profesores %}
         {% for profesor in profesores %}
             <p>profesor: {{ profesor.nombre }}</p>
             <a href="{% url "AppCoderEliminarProfesores" profesor.nombre  %}">Eliminar</a>
