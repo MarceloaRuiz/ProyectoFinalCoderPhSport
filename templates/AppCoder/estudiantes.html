@@ -14,7 +14,7 @@
     <hr><br>
     {% if estudiantes %}
         {% for estudiante in estudiantes %}
-            <p>estudiante: {{ estudiante.nombre }}</p>
+            <p>estudiante: {{ estudiante.nombre }} {{ estudiante.apellido }}</p>
             <a href="{% url "AppCoderEliminarEstudiantes" estudiante.email  %}">Eliminar</a>
             <a href="{% url "AppCoderEditarEstudiantes" estudiante.email  %}">Editar</a>
         {% endfor %}

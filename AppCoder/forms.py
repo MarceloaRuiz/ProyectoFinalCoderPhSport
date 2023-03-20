@@ -23,6 +23,7 @@ class BusquedaCursoForm(forms.Form):
 
     nombre = forms.CharField(min_length=3, max_length=40)
 
+
 class BusquedaEstudianteForm(forms.Form):
 
     nombre = forms.CharField(min_length=3, max_length=40)

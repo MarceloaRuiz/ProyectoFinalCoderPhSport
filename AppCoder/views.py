@@ -13,6 +13,7 @@ def busqueda_curso(request):
         }
     return render(request, 'AppCoder/busqueda_curso.html', context=context)
 
+
 def editar_curso(request, camada):
     get_curso = Curso.objects.get(camada=camada)
     if request.method == "POST":
