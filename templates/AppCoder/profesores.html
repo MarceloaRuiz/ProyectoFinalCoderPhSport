@@ -3,20 +3,21 @@
 
 {% block contenido_cambia %}
 
-    {#buscar curso#}
+    {#buscar profesor#}
     <br><hr>
     <form action="{% url 'AppCoderBuscarProfesores' %}">
     {{ form_busqueda.as_p }}
     <input type="submit" value="Buscar">
     </form>
     <a href="{% url "AppCoderCrearProfesores"%}" > Creacion del profesor</a>
-    {#ver cursos#}
+    {#ver profesores#}
     <hr><br>
     {% if profesores %}
         {% for profesor in profesores %}
             <p>profesor: {{ profesor.nombre }}</p>
-            <a href="{% url "AppCoderEliminarProfesores" profesor.nombre  %}">Eliminar</a>
-            <a href="{% url "AppCoderEditarProfesores" profesor.nombre %}">Editar</a>
+            <p>profesor: {{ profesor.email }}</p>
+            <a href="{% url "AppCoderEliminarProfesores" profesor.email  %}">Eliminar</a>
+            <a href="{% url "AppCoderEditarProfesores" profesor.email %}">Editar</a>
         {% endfor %}
     {% else %}
         <h1>No hay profesores en el momento</h1>
