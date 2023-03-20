@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido_cambia %}
+    {% if estudiantes %}
+        {% for estudiante in estudiantes %}
+            <p>estudiante: {{ estudiante}}</p>
+
+        {% endfor %}
+    {% else %}
+        <h3>no hay estudiantes filtrados</h3>
+    {% endif %}
+
+
+{% endblock %}
