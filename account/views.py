@@ -7,6 +7,37 @@ from account.forms import UserRegisterForm
 
 
 # Create your views here.
+def editar_usuario(request):
+
+    user = request.user
+    if request.method == "POST":
+        # form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            informacion = form.cleaned_data
+            user.username= informacion["username"]
+            user.email = informacion["email"]
+            user.is_staff = informacion["is_staff"]
+
+            user.save()
+            return redirect("accountLogin")
+
+    form = UserRegisterForm(initial={
+        "username": user.username,
+        "email": user.email,
+        "is_staff": user.is_staff
+    })
+
+    context = {
+        "form": form,
+        "titulo": "Editar usuario",
+        "enviar": "Enviar"
+    }
+
+    return render(request, "account/form.html", context=context)
+
+
+
 
 def register_account(request):
     if request.method == "POST":
@@ -18,9 +49,11 @@ def register_account(request):
 
     form = UserRegisterForm()
     context = {
-        "form": form
+        "form": form,
+        "titulo": "Registrar usuario",
+        "enviar": "Registrar"
     }
-    return render(request, "account/login.html", context=context)
+    return render(request, "account/form.html", context=context)
 
 
 def login_account(request):
@@ -35,12 +68,14 @@ def login_account(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, "account/login.html", context={"mensajes":["Logueado con exito"]})
+                return render(request, "account/form.html", context={"mensajes":["Logueado con exito"]})
             else:
-                return render(request, "account/login.html", context={"mensajes":["Ingrese los datos correctos"]})
+                return render(request, "account/form.html", context={"mensajes":["Ingrese los datos correctos"]})
                 # return redirect("AppCoderCursos") OTRA FORMA ES REDIRECCIONARLO A OTRA PAGINA.
     form = AuthenticationForm()
     context = {
-        "form": form
+        "form": form,
+        "titulo": "Login",
+        "enviar": "Iniciar"
     }
-    return render(request, "account/login.html", context=context)
+    return render(request, "account/Form.html", context=context)
