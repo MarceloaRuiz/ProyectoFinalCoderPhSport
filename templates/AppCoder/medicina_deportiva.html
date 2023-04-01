@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+
+{% block contenido_cambia %}
+
+
+    {% if planes %}
+        {% for plan in planes %}
+            <p>plan: {{ plan.nombre }}</p>
+            <p>numero: {{ plan.numero }}</p>
+            <p>description: {{ plan.descripcion }}</p>
+            <p>especialista: {{ plan.especialista }}</p>
+            <p>paciente: {{ plan.paciente }}</p>
+            
+        {% endfor %}
+    {% else %}
+        <h1>No hay planes en el momento</h1>
+    {% endif %} 
+
+{% endblock %}

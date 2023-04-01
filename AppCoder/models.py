@@ -2,35 +2,57 @@
 from django.db import models
 
 
-class Curso(models.Model):
+class Plan_Medicina_Deportiva(models.Model):
 
     nombre = models.CharField(max_length=40)
-    camada = models.IntegerField(unique=True)
+    numero = models.IntegerField()
+    descripcion = models.TextField()
+    especialista = models.CharField(max_length=40)
+    paciente = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"Curso: {self.nombre}, Camada: {self.camada}"
+        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
 
 
-class Estudiantes(models.Model):
-    nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=30)
-    email = models.EmailField(unique=True)
-
-    def __str__(self):
-        return f"Estudiantes: {self.nombre} {self.apellido} {self.email}  "
-
-
-class Profesor(models.Model):
-    nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=30)
-    email = models.EmailField(unique=True)
-    profesion = models.CharField(max_length=30)
+class Plan_Nutricion(models.Model):
+    nombre = models.CharField(max_length=40)
+    numero = models.IntegerField()
+    descripcion = models.TextField()
+    especialista = models.CharField(max_length=40)
+    paciente = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"Profesor: {self.nombre} {self.apellido}"
+        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
 
 
-class Entregable(models.Model):
-    nombre = models.CharField(max_length=30)
-    fecha_de_entrega = models.DateField()
-    entregado = models.BooleanField()
+class Plan_Kinesiologia_Fisioterapia(models.Model):
+    nombre = models.CharField(max_length=40)
+    numero = models.IntegerField()
+    descripcion = models.TextField()
+    especialista = models.CharField(max_length=40)
+    paciente = models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
+
+
+class Plan_Preparacion_Fisica(models.Model):
+    nombre = models.CharField(max_length=40)
+    numero = models.IntegerField()
+    descripcion = models.TextField()
+    especialista = models.CharField(max_length=40)
+    paciente = models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
+
+
+class Plan_Psicologia_Deportiva(models.Model):
+    nombre = models.CharField(max_length=40)
+    numero = models.IntegerField()
+    descripcion = models.TextField()
+    especialista = models.CharField(max_length=40)
+    paciente = models.CharField(max_length=40)
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"

@@ -2,8 +2,8 @@
 
 
 {% block contenido_cambia %}
-    {#creacion de estudiantes#}
-   <form action="{% url 'AppCoderCrearEstudiantes' %}" method="post">
+    {#creacion de curso#}
+   <form action="{% url 'crear_plan_medicina_deportiva' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Crear">

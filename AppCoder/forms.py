@@ -1,31 +1,34 @@
 from django import forms
-from AppCoder.models import Curso, Estudiantes, Profesor
+from AppCoder.models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, Plan_Psicologia_Deportiva
 
-class CursoForm(forms.ModelForm):
-
-    class Meta:
-        model = Curso
-        fields = "__all__"
-
-class EstudianteForm(forms.ModelForm):
+class Plan_Medicina_DeportivaForm(forms.ModelForm):
 
     class Meta:
-        model = Estudiantes
+        model = Plan_Medicina_Deportiva
         fields = "__all__"
 
-
-class ProfesorForm(forms.ModelForm):
+class Plan_Kinesiologia_FisioterapiaForm(forms.ModelForm):
 
     class Meta:
-        model = Profesor
+        model = Plan_Kinesiologia_Fisioterapia
         fields = "__all__"
-class BusquedaCursoForm(forms.Form):
-
-    nombre = forms.CharField(min_length=3, max_length=40)
 
 
-class BusquedaEstudianteForm(forms.Form):
+class Plan_NutricionForm(forms.ModelForm):
 
-    nombre = forms.CharField(min_length=3, max_length=40)
-class BusquedaProfesorForm(forms.Form):
-        nombre = forms.CharField(min_length=3, max_length=40)
+    class Meta:
+        model = Plan_Nutricion
+        fields = "__all__"
+
+class Plan_Preparacion_FisicaForm(forms.ModelForm):
+
+    class Meta:
+        model = Plan_Preparacion_Fisica
+        fields = "__all__"
+
+
+class Plan_Psicologia_DeportivaForm(forms.ModelForm):
+
+    class Meta:
+        model = Plan_Psicologia_Deportiva
+        fields = "__all__"
