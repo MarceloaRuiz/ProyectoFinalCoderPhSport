@@ -150,3 +150,73 @@ def eliminar_plan_nutricion(request, id):
     get_plan.delete()
 
     return redirect("Nutricion")
+
+
+def plan_kinesiologia_fisioterapia(request):
+
+      all_planes = Plan_Kinesiologia_Fisioterapia.objects.all()
+      context = {
+        "planes": all_planes,
+        "form": Plan_Kinesiologia_FisioterapiaForm()
+      }
+      return render(request, "AppCoder/kinesiologia_fisioterapia.html", context=context)
+
+
+def crear_plan_kinesiologia_fisioterapia(request):
+    if request.method == "POST":
+        mi_formulario = Plan_Kinesiologia_FisioterapiaForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            plan_save = Plan_Kinesiologia_Fisioterapia(
+                nombre=informacion['nombre'],
+                numero=informacion['numero'],
+                descripcion=informacion['descripcion'],
+                especialista=informacion['especialista'],
+                paciente=informacion['paciente'],
+            )
+            plan_save.save()
+            return redirect("Kinesiologia_Fisioterapia")
+
+
+    context = {
+        "form": Plan_Kinesiologia_FisioterapiaForm()
+    }
+    return render(request, 'AppCoder/crear_plan_kinesiologia_fisioterapia.html', context=context)
+
+
+def editar_plan_kinesiologia_fisioterapia(request, id):
+    get_plan = Plan_Kinesiologia_Fisioterapia.objects.get(id=id)
+    if request.method == "POST":
+        mi_formulario = Plan_Kinesiologia_FisioterapiaForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            get_plan.nombre = informacion['nombre']
+            get_plan.numero =  informacion['numero']
+            get_plan.descripcion=informacion['descripcion']
+            get_plan.especialista=informacion['especialista']
+            get_plan.paciente=informacion['paciente']
+
+            get_plan.save()
+            return redirect("Kinesiologia_Fisioterapia")
+
+
+    context = {
+        "id": id,
+        "form": Plan_Kinesiologia_FisioterapiaForm(initial={
+            "nombre": get_plan.nombre,
+            "numero": get_plan.numero,
+            "descripcion": get_plan.descripcion,
+            "especialista": get_plan.especialista,
+            "paciente": get_plan.paciente,
+    })
+    }
+    return render(request, 'AppCoder/editar_plan_kinesiologia_fisioterapia.html', context=context)
+
+
+def eliminar_plan_kinesiologia_fisioterapia(request, id):
+    get_plan = Plan_Kinesiologia_Fisioterapia.objects.get(id=id)
+    get_plan.delete()
+
+    return redirect("Kinesiologia_Fisioterapia")

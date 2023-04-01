@@ -12,4 +12,9 @@ urlpatterns = [
     path('nutricion/crear', crear_plan_nutricion, name="crear_plan_nutricion"),
     path('nutricion/editar/<int:id>/', editar_plan_nutricion, name="editar_plan_nutricion"),
     path('nutricion/eliminar/<int:id>', eliminar_plan_nutricion, name="eliminar_plan_nutricion"),
+
+    path('kinesiologia_fisioterapia/', plan_kinesiologia_fisioterapia, name="Kinesiologia_Fisioterapia"),
+    path('kinesiologia_fisioterapia/crear', crear_plan_kinesiologia_fisioterapia, name="crear_plan_kinesiologia_fisioterapia"),
+    path('kinesiologia_fisioterapia/editar/<int:id>/', editar_plan_kinesiologia_fisioterapia, name="editar_plan_kinesiologia_fisioterapia"),
+    path('kinesiologia_fisioterapia/eliminar/<int:id>', eliminar_plan_kinesiologia_fisioterapia, name="eliminar_plan_kinesiologia_fisioterapia"),
 ]
