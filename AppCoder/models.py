@@ -11,7 +11,7 @@ class Plan_Medicina_Deportiva(models.Model):
     paciente = models.CharField(max_length=40)
 
     def __str__(self):
-        return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
+        return f"Nombre: {self.nombre}, Numero: {self.numero},  Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
 
 
 class Plan_Nutricion(models.Model):
