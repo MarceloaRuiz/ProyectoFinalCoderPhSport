@@ -17,4 +17,10 @@ urlpatterns = [
     path('kinesiologia_fisioterapia/crear', crear_plan_kinesiologia_fisioterapia, name="crear_plan_kinesiologia_fisioterapia"),
     path('kinesiologia_fisioterapia/editar/<int:id>/', editar_plan_kinesiologia_fisioterapia, name="editar_plan_kinesiologia_fisioterapia"),
     path('kinesiologia_fisioterapia/eliminar/<int:id>', eliminar_plan_kinesiologia_fisioterapia, name="eliminar_plan_kinesiologia_fisioterapia"),
+
+    path('preparacion_fisica/', plan_preparacion_fisica, name="Preparacion_Fisica"),
+    path('preparacion_fisica/crear', crear_plan_preparacion_fisica, name="crear_plan_preparacion_fisica"),
+    path('preparacion_fisica/editar/<int:id>/', editar_plan_preparacion_fisica, name="editar_plan_preparacion_fisica"),
+    path('preparacion_fisica/eliminar/<int:id>', eliminar_plan_preparacion_fisica, name="eliminar_plan_preparacion_fisica"),
+
 ]

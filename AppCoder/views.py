@@ -220,3 +220,73 @@ def eliminar_plan_kinesiologia_fisioterapia(request, id):
     get_plan.delete()
 
     return redirect("Kinesiologia_Fisioterapia")
+
+
+def plan_preparacion_fisica(request):
+
+      all_planes = Plan_Preparacion_Fisica.objects.all()
+      context = {
+        "planes": all_planes,
+        "form": Plan_Preparacion_FisicaForm()
+      }
+      return render(request, "AppCoder/preparacion_fisica.html", context=context)
+
+
+def crear_plan_preparacion_fisica(request):
+    if request.method == "POST":
+        mi_formulario = Plan_Preparacion_FisicaForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            plan_save = Plan_Preparacion_Fisica(
+                nombre=informacion['nombre'],
+                numero=informacion['numero'],
+                descripcion=informacion['descripcion'],
+                especialista=informacion['especialista'],
+                paciente=informacion['paciente'],
+            )
+            plan_save.save()
+            return redirect("Preparacion_Fisica")
+
+
+    context = {
+        "form": Plan_Preparacion_FisicaForm()
+    }
+    return render(request, 'AppCoder/crear_plan_preparacion_fisica.html', context=context)
+
+
+def editar_plan_preparacion_fisica(request, id):
+    get_plan = Plan_Preparacion_Fisica.objects.get(id=id)
+    if request.method == "POST":
+        mi_formulario = Plan_Preparacion_FisicaForm(request.POST)
+
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            get_plan.nombre = informacion['nombre']
+            get_plan.numero =  informacion['numero']
+            get_plan.descripcion=informacion['descripcion']
+            get_plan.especialista=informacion['especialista']
+            get_plan.paciente=informacion['paciente']
+
+            get_plan.save()
+            return redirect("Preparacion_Fisica")
+
+
+    context = {
+        "id": id,
+        "form": Plan_Preparacion_FisicaForm(initial={
+            "nombre": get_plan.nombre,
+            "numero": get_plan.numero,
+            "descripcion": get_plan.descripcion,
+            "especialista": get_plan.especialista,
+            "paciente": get_plan.paciente,
+    })
+    }
+    return render(request, 'AppCoder/editar_plan_preparacion_fisica.html', context=context)
+
+
+def eliminar_plan_preparacion_fisica(request, id):
+    get_plan = Plan_Preparacion_Fisica.objects.get(id=id)
+    get_plan.delete()
+
+    return redirect("Preparacion_Fisica")
