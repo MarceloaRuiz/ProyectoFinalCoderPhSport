@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Servicio de {{servicio}} </h1>
+    {% for turno in turnos %}
+        <div class="card" style="margin-bottom: 10px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ turno.ci  }} - {{turno.ci|persona_ci }} </h5>
+                <a href="{% url 'eliminarTurnoServicio' turno.pk %}" class="btn btn-primary">Finalizar Turno</a>
+                <a href="{% url 'derivarServicio' turno.pk %}" class="btn btn-secondary">Derivar Servicio</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

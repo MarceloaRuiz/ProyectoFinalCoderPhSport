@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block contenido_cambia %}
+    {% if planes %}
+        {% for plan in planes %}
+            <p>{{ plan }}</p>
+
+        {% endfor %}
+    {% else %}
+        <h3>No hay Planes filtrados</h3>
+    {% endif %}
+
+
+{% endblock %}
+
