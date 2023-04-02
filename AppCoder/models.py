@@ -1,9 +1,7 @@
-
 from django.db import models
 
 
 class Plan_Medicina_Deportiva(models.Model):
-
     nombre = models.CharField(max_length=40)
     numero = models.IntegerField()
     descripcion = models.TextField()
@@ -56,3 +54,4 @@ class Plan_Psicologia_Deportiva(models.Model):
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}, Descripcion: {self.descripcion}, Especialista: {self.especialista}, Paciente: {self.paciente}"
+        BooleanField()
