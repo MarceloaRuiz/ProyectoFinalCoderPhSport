@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from AppCoder.models import Curso, Estudiantes, Profesor
 from AppCoder.forms import CursoForm, BusquedaCursoForm, EstudianteForm, ProfesorForm, BusquedaEstudianteForm, BusquedaProfesorForm
-from django.contrib.auth.decorators import login_required
 
-@login_required
 def busqueda_curso(request):
     #mostrar datos filtrados
     mi_formulario = BusquedaCursoForm(request.GET)

@@ -2,10 +2,10 @@
 
 
 {% block contenido_cambia %}
-    {#creacion de curso#}
-   <form action="{% url 'AppCoderEditarProfesores' email %}" method="post">
+   <form action="{% url 'editar_plan_nutricion' id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Editar">
     </form>
+    
 {% endblock %}

@@ -2,8 +2,7 @@
 
 
 {% block contenido_cambia %}
-    {#creacion de curso#}
-   <form action="{% url 'AppCoderCrearCursos' %}" method="post">
+   <form action="{% url 'crear_plan_kinesiologia_fisioterapia' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Crear">
