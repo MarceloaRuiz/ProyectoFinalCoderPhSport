@@ -23,4 +23,9 @@ urlpatterns = [
     path('preparacion_fisica/editar/<int:id>/', editar_plan_preparacion_fisica, name="editar_plan_preparacion_fisica"),
     path('preparacion_fisica/eliminar/<int:id>', eliminar_plan_preparacion_fisica, name="eliminar_plan_preparacion_fisica"),
 
+    path('psicologia_deportiva/', plan_psicologia_deportiva, name="Psicologia_Deportiva"),
+    path('psicologia_deportiva/crear', crear_plan_psicologia_deportiva, name="crear_plan_psicologia_deportiva"),
+    path('psicologia_deportiva/editar/<int:id>/', editar_plan_psicologia_deportiva, name="editar_plan_psicologia_deportiva"),
+    path('psicologia_deportiva/eliminar/<int:id>', eliminar_plan_psicologia_deportiva, name="eliminar_plan_psicologia_deportiva"),
+
 ]
