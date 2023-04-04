@@ -28,4 +28,6 @@ urlpatterns = [
     path('psicologia_deportiva/editar/<int:id>/', editar_plan_psicologia_deportiva, name="editar_plan_psicologia_deportiva"),
     path('psicologia_deportiva/eliminar/<int:id>', eliminar_plan_psicologia_deportiva, name="eliminar_plan_psicologia_deportiva"),
 
+    path('acerca_de_nosotros/', about, name="acerca_de_nosotros"),
+
 ]

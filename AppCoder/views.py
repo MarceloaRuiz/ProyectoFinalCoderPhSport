@@ -360,3 +360,7 @@ def eliminar_plan_psicologia_deportiva(request, id):
     get_plan.delete()
 
     return redirect("Psicologia_Deportiva")
+
+
+def about(request):
+    return render(request, 'AppCoder/acercaDeNosotros.html', {})
