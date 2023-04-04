@@ -3,18 +3,23 @@
 
 {% block contenido_cambia %}
 
+{# Mostrar listado #}
+    <h1>Listado planes:</h1>
 
     {% if planes %}
         {% for plan in planes %}
-            <p>plan: {{ plan.nombre }}</p>
-            <p>numero: {{ plan.numero }}</p>
-            <p>description: {{ plan.descripcion }}</p>
-            <p>especialista: {{ plan.especialista }}</p>
-            <p>paciente: {{ plan.paciente }}</p>
-            <p>--------------</p>
+
+            <p>{{ plan }}
+                <a href=" {% url 'eliminar_plan_preparacion_fisica' plan.id %} ">Eliminar</a>
+                <a href=" {% url 'editar_plan_preparacion_fisica' plan.id %} ">Editar</a>
+            </p>
+
         {% endfor %}
     {% else %}
         <h1>No hay planes en el momento</h1>
-    {% endif %} 
+    {% endif %}
+
+    {# Crear en el listado #}
+    <button onclick="location.href= '{% url 'crear_plan_preparacion_fisica' %}' "  >Crear plan nuevo</button>
 
 {% endblock %}
