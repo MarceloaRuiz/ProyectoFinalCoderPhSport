@@ -20,6 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
                 <a class="navbar-brand" href="{% url 'Medicina_deportiva' %}">Medicina deportiva</a>
                 <a class="navbar-brand" href="{% url 'Nutricion' %}">Nutrición</a>
                 <a class="navbar-brand" href="{% url 'Kinesiologia_Fisioterapia' %}">Kinesiologia y Fisioterapia</a>
@@ -45,7 +46,7 @@
         <!-- Body -->
         {% block contenido_cambia %}
             <h1></h1>
-        {% endblock %}
+
 
         <!-- Masthead-->
         <header class="masthead">
@@ -116,7 +117,7 @@
             </div>
         </section>
         <!-- Testimonials-->
-
+        {% endblock %}
         <!-- Call to Action-->
         <section class="call-to-action text-white text-center" id="signup">
             <div class="container position-relative">
