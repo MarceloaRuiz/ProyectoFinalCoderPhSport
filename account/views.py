@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 from account.forms import UserRegisterForm
+from account.models import Avatar
 
 
 # Create your views here.
@@ -12,12 +13,18 @@ def editar_usuario(request):
     user = request.user
     if request.method == "POST":
         # form = UserCreationForm(request.POST)
-        form = UserRegisterForm(request.POST)
+        form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             informacion = form.cleaned_data
             user.username= informacion["username"]
             user.email = informacion["email"]
             user.is_staff = informacion["is_staff"]
+
+            try:
+                user.avatar.imagen = informacion["imagen"]
+            except:
+                avatar = Avatar(user=user, imagen=informacion["imagen"])
+                avatar.save()
 
             user.save()
             return redirect("accountLogin")

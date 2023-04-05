@@ -1,6 +1,8 @@
+from django.conf.urls.static import static
 from django.urls import path
 
 from AppCoder.views import *
+from ProyectoCoder34675 import settings
 
 urlpatterns = [
     path('medicina_deportiva/', plan_medicina_deportiva, name="Medicina_deportiva"),
@@ -28,4 +30,4 @@ urlpatterns = [
     path('psicologia_deportiva/editar/<int:id>/', editar_plan_psicologia_deportiva, name="editar_plan_psicologia_deportiva"),
     path('psicologia_deportiva/eliminar/<int:id>', eliminar_plan_psicologia_deportiva, name="eliminar_plan_psicologia_deportiva"),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
