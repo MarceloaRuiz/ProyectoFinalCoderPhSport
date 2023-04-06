@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenido_cambia %}
+
+<br>
+<br>
+
+
+<div class="container">
+
+<p><h4>{{Plan_Medicina_Deportiva.nombre}}</h4></p>
+
+<p>Numero: {{Plan_Medicina_Deportiva.numero}}</p>
+<p>Descripcion: {{Plan_Medicina_Deportiva.descripcion}}</p>
+<p>Especialista: {{Plan_Medicina_Deportiva.especialista}}</p>
+<p>Paciente: {{Plan_Medicina_Deportiva.paciente}}</p>
+
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not Plan_Medicina_Deportiva.comentarios.all %}
+        No han comentado este plan
+    {% else %}
+        {% for comentario in Plan_Medicina_Deportiva.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' Plan_Medicina_Deportiva.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

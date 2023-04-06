@@ -30,4 +30,6 @@ urlpatterns = [
 
     path('acerca_de_nosotros/', about, name="acerca_de_nosotros"),
 
+    path('medicina_depórtiva/<int:pk>/', MedicinaDetalle.as_view(), name='detalle_medicina_deportiva'),
+    path('medicina_deportiva/<int:pk>/comentario/', ComentarioPagina.as_view(), name='comentario'),
 ]

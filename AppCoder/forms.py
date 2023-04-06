@@ -1,5 +1,7 @@
 from django import forms
-from AppCoder.models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, Plan_Psicologia_Deportiva
+from AppCoder.models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, \
+    Plan_Preparacion_Fisica, Plan_Psicologia_Deportiva, Comentario
+
 
 class Plan_Medicina_DeportivaForm(forms.ModelForm):
 
@@ -32,3 +34,13 @@ class Plan_Psicologia_DeportivaForm(forms.ModelForm):
     class Meta:
         model = Plan_Psicologia_Deportiva
         fields = "__all__"
+
+
+class FormularioComentario(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ('nombre', 'mensaje')
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'mensaje' : forms.Textarea(attrs={'class': 'form-control'}),
+        }

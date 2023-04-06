@@ -1,6 +1,12 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, Plan_Psicologia_Deportiva
-from .forms import Plan_Medicina_DeportivaForm, Plan_Kinesiologia_FisioterapiaForm, Plan_NutricionForm, Plan_Preparacion_FisicaForm, Plan_Psicologia_DeportivaForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView
+
+from .models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, \
+    Plan_Psicologia_Deportiva, Comentario
+from .forms import Plan_Medicina_DeportivaForm, Plan_Kinesiologia_FisioterapiaForm, Plan_NutricionForm, \
+    Plan_Preparacion_FisicaForm, Plan_Psicologia_DeportivaForm, FormularioComentario
 
 """ def busqueda_curso(request):
     #mostrar datos filtrados
@@ -364,3 +370,18 @@ def eliminar_plan_psicologia_deportiva(request, id):
 
 def about(request):
     return render(request, 'AppCoder/acercaDeNosotros.html', {})
+
+class ComentarioPagina(LoginRequiredMixin, CreateView):
+    model = Comentario
+    form_class = FormularioComentario
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPagina, self).form_valid(form)
+
+class MedicinaDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Medicina_Deportiva
+    context_object_name = 'Plan_Medicina_Deportiva'
+    template_name = 'AppCoder/detalle_medicina_deportiva.html'
