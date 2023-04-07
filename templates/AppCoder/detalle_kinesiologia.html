@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenido_cambia %}
+
+<br>
+<br>
+
+
+<div class="container">
+
+<p><h4>{{Plan_Kinesiologia_Fisioterapia.nombre}}</h4></p>
+
+<p>Numero: {{Plan_Kinesiologia_Fisioterapia.numero}}</p>
+<p>Descripcion: {{Plan_Kinesiologia_Fisioterapia.descripcion}}</p>
+<p>Especialista: {{Plan_Kinesiologia_Fisioterapia.especialista}}</p>
+<p>Paciente: {{Plan_Kinesiologia_Fisioterapia.paciente}}</p>
+
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not Plan_Kinesiologia_Fisioterapia.comentariosKinesiologia.all %}
+        No han comentado este plan
+    {% else %}
+        {% for comentario in Plan_Kinesiologia_Fisioterapia.comentariosKinesiologia.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentarioKinesiologia' Plan_Kinesiologia_Fisioterapia.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

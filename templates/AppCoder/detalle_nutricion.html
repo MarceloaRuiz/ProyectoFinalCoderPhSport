@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenido_cambia %}
+
+<br>
+<br>
+
+
+<div class="container">
+
+<p><h4>{{Plan_Nutricion.nombre}}</h4></p>
+
+<p>Numero: {{Plan_Nutricion.numero}}</p>
+<p>Descripcion: {{Plan_Nutricion.descripcion}}</p>
+<p>Especialista: {{Plan_Nutricion.especialista}}</p>
+<p>Paciente: {{Plan_Nutricion.paciente}}</p>
+
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not Plan_Nutricion.comentariosNutricion.all %}
+        No han comentado este plan
+    {% else %}
+        {% for comentario in Plan_Nutricion.comentariosNutricion.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentarioNutricion' Plan_Nutricion.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

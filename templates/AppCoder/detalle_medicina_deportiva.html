@@ -22,17 +22,17 @@
     <h4>Comentarios...</h4>
     <br>
     <div class="container">
-    {% if not Plan_Medicina_Deportiva.comentarios.all %}
+    {% if not Plan_Medicina_Deportiva.comentariosMedicina.all %}
         No han comentado este plan
     {% else %}
-        {% for comentario in Plan_Medicina_Deportiva.comentarios.all %}
+        {% for comentario in Plan_Medicina_Deportiva.comentariosMedicina.all %}
         <p><strong>{{comentario.nombre}}</strong></p>
         <p>{{comentario.mensaje}}</p>
         <p><small>{{comentario.fechaComentario}}</small></p>
         <hr>
         {% endfor %}
     {% endif %}
-    <a href="{% url 'comentario' Plan_Medicina_Deportiva.pk %}">Agrega un Comentario</a>
+    <a href="{% url 'comentarioMedicina' Plan_Medicina_Deportiva.pk %}">Agrega un Comentario</a>
     </div>
 </div>
 <br>

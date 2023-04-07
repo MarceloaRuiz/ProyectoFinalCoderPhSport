@@ -31,5 +31,15 @@ urlpatterns = [
     path('acerca_de_nosotros/', about, name="acerca_de_nosotros"),
 
     path('medicina_depórtiva/<int:pk>/', MedicinaDetalle.as_view(), name='detalle_medicina_deportiva'),
-    path('medicina_deportiva/<int:pk>/comentario/', ComentarioPagina.as_view(), name='comentario'),
+    path('kinesiologia_fisioterapia/<int:pk>/', KinesiologiaDetalle.as_view(), name='detalle_kinesiologia_fisioterapia'),
+    path('nutricion/<int:pk>/', NutricionDetalle.as_view(), name='detalle_nutricion'),
+    path('preparacion_fisica/<int:pk>/', PreparacionFisicaDetalle.as_view(), name='detalle_preparacion_fisica'),
+    path('psicologia_deportiva/<int:pk>/', PsicologiaDeportivaDetalle.as_view(), name='detalle_psicologia_deportiva'),
+
+    path('medicina_deportiva/<int:pk>/comentario/', ComentarioPaginaMedicina.as_view(), name='comentarioMedicina'),
+    path('kinesiologia_fisioterapia/<int:pk>/comentario/', ComentarioPaginaKinesiologia.as_view(), name='comentarioKinesiologia'),
+    path('nutricion/<int:pk>/comentario/', ComentarioPaginaNutricion.as_view(), name='comentarioNutricion'),
+    path('preparacion_fisica/<int:pk>/comentario/', ComentarioPaginaPreparacionFisica.as_view(), name='comentarioPreparacionFisica'),
+    path('psicologia_deportiva/<int:pk>/comentario/', ComentarioPaginaPsicologiaDeportiva.as_view(), name='comentarioPsicologia'),
+
 ]

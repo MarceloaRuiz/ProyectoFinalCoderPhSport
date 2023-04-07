@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenido_cambia %}
+
+<br>
+<br>
+
+
+<div class="container">
+
+<p><h4>{{Plan_Psicologia_Deportiva.nombre}}</h4></p>
+
+<p>Numero: {{Plan_Psicologia_Deportiva.numero}}</p>
+<p>Descripcion: {{Plan_Psicologia_Deportiva.descripcion}}</p>
+<p>Especialista: {{Plan_Psicologia_Deportiva.especialista}}</p>
+<p>Paciente: {{Plan_Psicologia_Deportiva.paciente}}</p>
+
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not Plan_Psicologia_Deportiva.comentariosPsicologia.all %}
+        No han comentado este plan
+    {% else %}
+        {% for comentario in Plan_Psicologia_Deportiva.comentariosPsicologia.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentarioPsicologia' Plan_Psicologia_Deportiva.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

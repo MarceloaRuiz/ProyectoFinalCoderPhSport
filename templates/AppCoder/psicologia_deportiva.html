@@ -12,6 +12,8 @@
             <p>{{ plan }}
                 <a href=" {% url 'eliminar_plan_psicologia_deportiva' plan.id %} ">Eliminar</a>
                 <a href=" {% url 'editar_plan_psicologia_deportiva' plan.id %} ">Editar</a>
+                <a href=" {% url 'detalle_psicologia_deportiva' plan.id %} ">Leer mas</a>
+
             </p>
 
         {% endfor %}
