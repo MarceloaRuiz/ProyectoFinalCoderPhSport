@@ -27,7 +27,7 @@ def editar_usuario(request):
                 avatar.save()
 
             user.save()
-            return redirect("accountLogin")
+            return redirect("home")
 
     form = UserRegisterForm(initial={
         "username": user.username,

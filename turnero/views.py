@@ -23,7 +23,7 @@ def vista(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    return render(request, 'home.html')
+    return render(request, 'base.html')
 
 
 def cerrar_sesion(request):
