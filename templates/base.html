@@ -26,12 +26,13 @@
                 <a class="navbar-brand" href="{% url 'Kinesiologia_Fisioterapia' %}">Kinesiologia y Fisioterapia</a>
                 <a class="navbar-brand" href="{% url 'Preparacion_Fisica' %}">Preparacion Fisica</a>
                 <a class="navbar-brand" href="{% url 'Psicologia_Deportiva' %}">Psicologia Deportiva</a>
-                <a class="navbar-brand" href="{% url 'home' %}">Turnero</a>
+
 
             {% if user.is_authenticated %}
                 <img src="{{ user.avatar.imagen.url }}" height="40 px">
                 <a class="navbar-brand">{{ user.username }}</a>
                 <a class="btn btn-primary" href="{% url 'accountLogout'%}">Logout</a>
+                <a class="btn btn-primary" href="{% url 'accountEditarUsuario'%}">Editar</a>
             {% else %}
                 <a class="btn btn-primary" href="{% url 'accountRegistrar'%}">Registrar</a>
                 <a class="btn btn-primary" href="{% url 'accountLogin'%}">Login</a>
@@ -143,7 +144,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
