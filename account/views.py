@@ -16,7 +16,7 @@ def editar_usuario(request):
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             informacion = form.cleaned_data
-            user.username= informacion["username"]
+            user.username = informacion["username"]
             user.email = informacion["email"]
             user.is_staff = informacion["is_staff"]
 
