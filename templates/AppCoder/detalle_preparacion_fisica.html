@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block contenido_cambia %}
+
+<br>
+<br>
+
+
+<div class="container">
+
+<p><h4>{{Plan_Preparacion_Fisica.nombre}}</h4></p>
+
+<p>Numero: {{Plan_Preparacion_Fisica.numero}}</p>
+<p>Descripcion: {{Plan_Preparacion_Fisica.descripcion}}</p>
+<p>Especialista: {{Plan_Preparacion_Fisica.especialista}}</p>
+<p>Paciente: {{Plan_Preparacion_Fisica.paciente}}</p>
+
+
+</div>
+<br>
+<div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not Plan_Preparacion_Fisica.comentariosPreparacionFisca.all %}
+        No han comentado este plan
+    {% else %}
+        {% for comentario in Plan_Preparacion_Fisica.comentariosPreparacionFisca.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentarioPreparacionFisica' Plan_Preparacion_Fisica.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+{% endblock %}

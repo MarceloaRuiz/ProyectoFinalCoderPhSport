@@ -1,6 +1,15 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from .models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, Plan_Psicologia_Deportiva
-from .forms import Plan_Medicina_DeportivaForm, Plan_Kinesiologia_FisioterapiaForm, Plan_NutricionForm, Plan_Preparacion_FisicaForm, Plan_Psicologia_DeportivaForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView
+
+from .models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, \
+    Plan_Psicologia_Deportiva, ComentarioMedicina, ComentarioKinesiologia, ComentarioNutricion, \
+    ComentarioPreparacionFisica, ComentarioPsicologia
+from .forms import Plan_Medicina_DeportivaForm, Plan_Kinesiologia_FisioterapiaForm, Plan_NutricionForm, \
+    Plan_Preparacion_FisicaForm, Plan_Psicologia_DeportivaForm, FormularioComentarioMedicina, \
+    FormularioComentarioKinesiologia, FormularioComentarioNutricion, FormularioComentarioPreparacionFisica, \
+    FormularioComentarioPsicologia
 
 """ def busqueda_curso(request):
     #mostrar datos filtrados
@@ -360,3 +369,90 @@ def eliminar_plan_psicologia_deportiva(request, id):
     get_plan.delete()
 
     return redirect("Psicologia_Deportiva")
+
+
+def about(request):
+    return render(request, 'AppCoder/acercaDeNosotros.html', {})
+
+class ComentarioPaginaMedicina(LoginRequiredMixin, CreateView):
+    model = ComentarioMedicina
+    form_class = FormularioComentarioMedicina
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPaginaMedicina, self).form_valid(form)
+
+class MedicinaDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Medicina_Deportiva
+    context_object_name = 'Plan_Medicina_Deportiva'
+    template_name = 'AppCoder/detalle_medicina_deportiva.html'
+
+
+class ComentarioPaginaKinesiologia(LoginRequiredMixin, CreateView):
+    model = ComentarioKinesiologia
+    form_class = FormularioComentarioKinesiologia
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPaginaKinesiologia, self).form_valid(form)
+
+
+class KinesiologiaDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Kinesiologia_Fisioterapia
+    context_object_name = 'Plan_Kinesiologia_Fisioterapia'
+    template_name = 'AppCoder/detalle_kinesiologia.html'
+
+
+class ComentarioPaginaNutricion(LoginRequiredMixin, CreateView):
+    model = ComentarioNutricion
+    form_class = FormularioComentarioNutricion
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPaginaNutricion, self).form_valid(form)
+
+
+class NutricionDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Nutricion
+    context_object_name = 'Plan_Nutricion'
+    template_name = 'AppCoder/detalle_nutricion.html'
+
+
+class ComentarioPaginaPreparacionFisica(LoginRequiredMixin, CreateView):
+    model = ComentarioPreparacionFisica
+    form_class = FormularioComentarioPreparacionFisica
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPaginaPreparacionFisica, self).form_valid(form)
+
+
+class PreparacionFisicaDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Preparacion_Fisica
+    context_object_name = 'Plan_Preparacion_Fisica'
+    template_name = 'AppCoder/detalle_preparacion_fisica.html'
+
+
+class ComentarioPaginaPsicologiaDeportiva(LoginRequiredMixin, CreateView):
+    model = ComentarioPsicologia
+    form_class = FormularioComentarioPsicologia
+    template_name = 'AppCoder/comentario.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.comentario_id = self.kwargs['pk']
+        return super(ComentarioPaginaPsicologiaDeportiva, self).form_valid(form)
+
+
+class PsicologiaDeportivaDetalle(LoginRequiredMixin, DetailView):
+    model = Plan_Psicologia_Deportiva
+    context_object_name = 'Plan_Psicologia_Deportiva'
+    template_name = 'AppCoder/detalle_psicologia_deportiva.html'
