@@ -2,7 +2,7 @@
 ## Aplicación PhSport
 La siguiente página es la entrega final del proyecto Coder Python PhSport
 
-# Seccionnes
+# Secciones
 * Medicina Deportiva
 * Nutrición
 * Kinesiología y Fisioterapia
@@ -44,3 +44,6 @@ Back-End:
 * Marcelo Ruiz: Hizo toda la logica en cuanto a ingresar al sistema, cerrar sesion y editar / registrar perfiles
 * Lara Krittian: Realizo la creacion de los modelos y formularios para los planes
 * Lautaro Tita: Contribuyo con la construccion de los modelos para los comentarios y con los detalles de cada plan
+
+# Link de demostracion 
+* ingresar a https://youtu.be/qCqTugdqvts
