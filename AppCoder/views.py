@@ -35,6 +35,7 @@ def editar_plan_medicina_deportiva(request, id):
             get_plan.descripcion=informacion['descripcion']
             get_plan.especialista=informacion['especialista']
             get_plan.paciente=informacion['paciente']
+            get_plan.archivo_pdf = informacion['archivo_pdf']
 
             get_plan.save()
             return redirect("Medicina_deportiva")
@@ -48,6 +49,7 @@ def editar_plan_medicina_deportiva(request, id):
             "descripcion": get_plan.descripcion,
             "especialista": get_plan.especialista,
             "paciente": get_plan.paciente,
+            'archivo_pdf': get_plan.archivo_pdf,
     })
     }
     return render(request, 'AppCoder/editar_plan_medicina_deportiva.html', context=context)
@@ -65,6 +67,7 @@ def crear_plan_medicina_deportiva(request):
                 descripcion=informacion['descripcion'],
                 especialista=informacion['especialista'],
                 paciente=informacion['paciente'],
+                archivo_pdf=informacion['archivo_pdf'],
             )
             plan_save.save()
             return redirect("Medicina_deportiva")
@@ -113,6 +116,7 @@ def crear_plan_nutricion(request):
                 descripcion=informacion['descripcion'],
                 especialista=informacion['especialista'],
                 paciente=informacion['paciente'],
+                archivo_pdf=informacion['archivo_pdf'],
             )
             plan_save.save()
             return redirect("Nutricion")
@@ -136,6 +140,7 @@ def editar_plan_nutricion(request, id):
             get_plan.descripcion=informacion['descripcion']
             get_plan.especialista=informacion['especialista']
             get_plan.paciente=informacion['paciente']
+            get_plan.archivo_pdf = informacion['archivo_pdf']
 
             get_plan.save()
             return redirect("Nutricion")
@@ -149,6 +154,7 @@ def editar_plan_nutricion(request, id):
             "descripcion": get_plan.descripcion,
             "especialista": get_plan.especialista,
             "paciente": get_plan.paciente,
+            'archivo_pdf': get_plan.archivo_pdf,
     })
     }
     return render(request, 'AppCoder/editar_plan_nutricion.html', context=context)
@@ -183,6 +189,7 @@ def crear_plan_kinesiologia_fisioterapia(request):
                 descripcion=informacion['descripcion'],
                 especialista=informacion['especialista'],
                 paciente=informacion['paciente'],
+                archivo_pdf=informacion['archivo_pdf'],
             )
             plan_save.save()
             return redirect("Kinesiologia_Fisioterapia")
@@ -206,6 +213,7 @@ def editar_plan_kinesiologia_fisioterapia(request, id):
             get_plan.descripcion=informacion['descripcion']
             get_plan.especialista=informacion['especialista']
             get_plan.paciente=informacion['paciente']
+            get_plan.archivo_pdf = informacion['archivo_pdf']
 
             get_plan.save()
             return redirect("Kinesiologia_Fisioterapia")
@@ -219,6 +227,7 @@ def editar_plan_kinesiologia_fisioterapia(request, id):
             "descripcion": get_plan.descripcion,
             "especialista": get_plan.especialista,
             "paciente": get_plan.paciente,
+            'archivo_pdf': get_plan.archivo_pdf,
     })
     }
     return render(request, 'AppCoder/editar_plan_kinesiologia_fisioterapia.html', context=context)
@@ -253,6 +262,7 @@ def crear_plan_preparacion_fisica(request):
                 descripcion=informacion['descripcion'],
                 especialista=informacion['especialista'],
                 paciente=informacion['paciente'],
+                archivo_pdf=informacion['archivo_pdf'],
             )
             plan_save.save()
             return redirect("Preparacion_Fisica")
@@ -276,6 +286,7 @@ def editar_plan_preparacion_fisica(request, id):
             get_plan.descripcion=informacion['descripcion']
             get_plan.especialista=informacion['especialista']
             get_plan.paciente=informacion['paciente']
+            get_plan.archivo_pdf = informacion['archivo_pdf']
 
             get_plan.save()
             return redirect("Preparacion_Fisica")
@@ -289,6 +300,7 @@ def editar_plan_preparacion_fisica(request, id):
             "descripcion": get_plan.descripcion,
             "especialista": get_plan.especialista,
             "paciente": get_plan.paciente,
+            'archivo_pdf': get_plan.archivo_pdf,
     })
     }
     return render(request, 'AppCoder/editar_plan_preparacion_fisica.html', context=context)
@@ -323,6 +335,7 @@ def crear_plan_psicologia_deportiva(request):
                 descripcion=informacion['descripcion'],
                 especialista=informacion['especialista'],
                 paciente=informacion['paciente'],
+                archivo_pdf=informacion['archivo_pdf'],
             )
             plan_save.save()
             return redirect("Psicologia_Deportiva")
@@ -346,6 +359,7 @@ def editar_plan_psicologia_deportiva(request, id):
             get_plan.descripcion=informacion['descripcion']
             get_plan.especialista=informacion['especialista']
             get_plan.paciente=informacion['paciente']
+            get_plan.archivo_pdf = informacion['archivo_pdf']
 
             get_plan.save()
             return redirect("Psicologia_Deportiva")
@@ -359,6 +373,7 @@ def editar_plan_psicologia_deportiva(request, id):
             "descripcion": get_plan.descripcion,
             "especialista": get_plan.especialista,
             "paciente": get_plan.paciente,
+            'archivo_pdf': get_plan.archivo_pdf,
     })
     }
     return render(request, 'AppCoder/editar_plan_psicologia_deportiva.html', context=context)

@@ -7,6 +7,7 @@ class Plan_Medicina_Deportiva(models.Model):
     descripcion = models.TextField()
     especialista = models.CharField(max_length=40)
     paciente = models.CharField(max_length=40)
+    archivo_pdf = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}"
@@ -18,6 +19,7 @@ class Plan_Nutricion(models.Model):
     descripcion = models.TextField()
     especialista = models.CharField(max_length=40)
     paciente = models.CharField(max_length=40)
+    archivo_pdf = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}"
@@ -29,6 +31,7 @@ class Plan_Kinesiologia_Fisioterapia(models.Model):
     descripcion = models.TextField()
     especialista = models.CharField(max_length=40)
     paciente = models.CharField(max_length=40)
+    archivo_pdf = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}"
@@ -40,6 +43,7 @@ class Plan_Preparacion_Fisica(models.Model):
     descripcion = models.TextField()
     especialista = models.CharField(max_length=40)
     paciente = models.CharField(max_length=40)
+    archivo_pdf = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}"
@@ -51,6 +55,7 @@ class Plan_Psicologia_Deportiva(models.Model):
     descripcion = models.TextField()
     especialista = models.CharField(max_length=40)
     paciente = models.CharField(max_length=40)
+    archivo_pdf = models.FileField(upload_to='pdfs/')
 
     def __str__(self):
         return f"Nombre: {self.nombre}, Numero: {self.numero}"
