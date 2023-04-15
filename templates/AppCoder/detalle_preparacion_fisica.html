@@ -16,6 +16,7 @@
 <p>Paciente: {{Plan_Preparacion_Fisica.paciente}}</p>
 
 
+
 </div>
 <br>
 <div class="container">
@@ -32,6 +33,7 @@
         <hr>
         {% endfor %}
     {% endif %}
+
     <a href="{% url 'comentarioPreparacionFisica' Plan_Preparacion_Fisica.pk %}">Agrega un Comentario</a>
     </div>
 </div>

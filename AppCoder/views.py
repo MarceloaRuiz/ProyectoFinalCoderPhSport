@@ -1,7 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, View
+from django.http import HttpResponse, Http404
+from django.shortcuts import get_object_or_404
+from .models import *
 
 from .models import Plan_Medicina_Deportiva, Plan_Kinesiologia_Fisioterapia, Plan_Nutricion, Plan_Preparacion_Fisica, \
     Plan_Psicologia_Deportiva, ComentarioMedicina, ComentarioKinesiologia, ComentarioNutricion, \
@@ -21,6 +24,8 @@ from .forms import Plan_Medicina_DeportivaForm, Plan_Kinesiologia_FisioterapiaFo
             "cursos": cursos_filtrados
         }
     return render(request, 'AppCoder/busqueda_curso.html', context=context) """
+
+
 
 
 def editar_plan_medicina_deportiva(request, id):

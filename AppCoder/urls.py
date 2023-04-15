@@ -42,4 +42,6 @@ urlpatterns = [
     path('preparacion_fisica/<int:pk>/comentario/', ComentarioPaginaPreparacionFisica.as_view(), name='comentarioPreparacionFisica'),
     path('psicologia_deportiva/<int:pk>/comentario/', ComentarioPaginaPsicologiaDeportiva.as_view(), name='comentarioPsicologia'),
 
+
+
 ]
