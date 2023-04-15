@@ -26,19 +26,6 @@
                 <a class="navbar-brand" href="{% url 'Kinesiologia_Fisioterapia' %}">Kinesiologia y Fisioterapia</a>
                 <a class="navbar-brand" href="{% url 'Preparacion_Fisica' %}">Preparacion Fisica</a>
                 <a class="navbar-brand" href="{% url 'Psicologia_Deportiva' %}">Psicologia Deportiva</a>
-
-
-            {% if user.is_authenticated %}
-                <img src="{{ user.avatar.imagen.url }}" height="40 px">
-                <a class="navbar-brand">{{ user.username }}</a>
-                <a class="btn btn-primary" href="{% url 'accountLogout'%}">Logout</a>
-                <a class="btn btn-primary" href="{% url 'accountEditarUsuario'%}">Editar</a>
-            {% else %}
-                <a class="btn btn-primary" href="{% url 'accountRegistrar'%}">Registrar</a>
-                <a class="btn btn-primary" href="{% url 'accountLogin'%}">Login</a>
-            {% endif %}
-
-
             </div>
         </nav>
         {# Messages #}
@@ -159,6 +146,7 @@
                 {% endif %}
             </ul>
             {% if user.is_authenticated %}
+                <img src="{{ user.avatar.imagen.url }}" height="40 px">
                 <div class="dropdown" style="margin-right: 5% !important;">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -171,6 +159,9 @@
                             Sesion</a>
                     </div>
                 </div>
+                {% else %}
+                <a class="btn btn-primary" href="{% url 'accountRegistrar'%}">Registrar</a>
+                <a class="btn btn-primary" href="{% url 'accountLogin'%}">Login</a>
             {% endif %}
 
 
