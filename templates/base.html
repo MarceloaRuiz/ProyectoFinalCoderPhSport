@@ -151,10 +151,10 @@
                         <a class="nav-link" href="{% url 'solicitarTurno' %}">Solicitar Turno</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'registrarPersona' %}" class="nav-link">Registrar Persona</a>
+                        <a href="{% url 'registrarPersona' %}" class="nav-link">Registrar Paciente</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'listarServicios' %}" class="nav-link">Servicios</a>
+                        <a href="{% url 'listarServicios' %}" class="nav-link">Especialidades</a>
                     </li>
                 {% endif %}
             </ul>
@@ -166,6 +166,7 @@
                     </button>
 
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'accountEditarUsuario' %}">Editar Usuario
                         <a class="dropdown-item" href="{% url 'cerrar_sesion' %}">Cerrar
                             Sesion</a>
                     </div>
